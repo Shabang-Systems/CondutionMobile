@@ -1,5 +1,5 @@
 {
-  "name": "condution-mobile",
+  "name": "condution",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -47,5 +47,5 @@
   "devDependencies": {
     "@capacitor/cli": "2.0.1"
   },
-  "description": "An Ionic project"
+  "description": "Tasks? Done. That was simple."
 }
