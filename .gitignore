@@ -126,3 +126,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Secrets
+secrets.json
