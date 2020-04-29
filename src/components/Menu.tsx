@@ -27,11 +27,12 @@ const Menu: React.FC = () => {
       <IonContent>
         <IonList>
               <IonMenuToggle key={0} autoHide={false}>
-              <IonItem className={location.pathname === "/page/Page" ? 'selected' : ''} routerLink={"/page/Page"} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
-                  <IonLabel id="menu-upcoming">Upcoming</IonLabel>
-                </IonItem>
+                  <IonItem className={location.pathname === "/page/Page" ? 'selected' : ''} routerLink={"/page/Page"} routerDirection="none" lines="none" detail={false}>
+                      <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
+                      <IonLabel id="menu-upcoming">Upcoming</IonLabel>
+                    </IonItem>
               </IonMenuToggle>
+              <IonLabel class="menu-label">Perspectives</IonLabel>
         </IonList>
       </IonContent>
     </IonMenu>

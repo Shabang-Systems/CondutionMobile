@@ -114,5 +114,14 @@ ion-item.selected {
 
 #menu-upcoming {
     font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 2px;
+}
+
+ion-label.menu-label {
+    padding-left:18px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ion-color-medium-shade);
 }
 
