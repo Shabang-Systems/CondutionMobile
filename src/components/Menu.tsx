@@ -12,57 +12,12 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { chevronForwardCircle } from 'ionicons/icons';
 import './Menu.css';
 import '../backend/CacheManager';
 import '../backend/PerspectiveManager';
 import '../backend/FirebaseManager';
-
-interface AppPage {
-  url: string;
-  iosIcon: string;
-  mdIcon: string;
-  title: string;
-}
-
-const appPages: AppPage[] = [
-  {
-    title: 'Inbox',
-    url: '/page/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
-  },
-  {
-    title: 'Outbox',
-    url: '/page/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
-  },
-  {
-    title: 'Favorites',
-    url: '/page/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
-  },
-  {
-    title: 'Archived',
-    url: '/page/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
-  },
-  {
-    title: 'Trash',
-    url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/page/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
-  }
-];
+import 'font-awesome/css/font-awesome.min.css';
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -70,17 +25,13 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          {appPages.map((appPage, index) => {
-            return (
-              <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon slot="start" icon={appPage.iosIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
+        <IonList>
+              <IonMenuToggle key={0} autoHide={false}>
+              <IonItem className={location.pathname === "/page/Page" ? 'selected' : ''} routerLink={"/page/Page"} routerDirection="none" lines="none" detail={false}>
+                  <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
+                  <IonLabel id="menu-upcoming">Upcoming</IonLabel>
                 </IonItem>
               </IonMenuToggle>
-            );
-          })}
         </IonList>
       </IonContent>
     </IonMenu>
