@@ -16,8 +16,13 @@ import { chevronForwardCircle } from 'ionicons/icons';
 import './Menu.css';
 import '../backend/CacheManager';
 import '../backend/PerspectiveManager';
-import '../backend/FirebaseManager';
+import {getTopLevelProjects, getPerspectives} from '../backend/FirebaseManager';
 import 'font-awesome/css/font-awesome.min.css';
+
+let ps : String[] = [];
+(getPerspectives("TcZUcte5MFOx410Q8WJ6mRW1Pco1").then((e:any)=>{
+    ps.push(e[2].map((p:any)=>p.name));
+}));
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -33,6 +38,15 @@ const Menu: React.FC = () => {
                     </IonItem>
               </IonMenuToggle>
               <IonLabel class="menu-label">Perspectives</IonLabel>
+            {ps.map((pName:String)=>{
+                return (
+                    <IonItem className={location.pathname === "/page/Perspective" ? 'selected' : ''} routerLink={"/page/Perspsective"} routerDirection="none" lines="none" detail={false}>
+                        <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
+                        <IonLabel id="menu-upcoming">{pName}</IonLabel>
+                    </IonItem>
+
+                );
+            })} 
         </IonList>
       </IonContent>
     </IonMenu>

@@ -115,3 +115,5 @@ const cRef = (() => {
     return cacheRef;
 })();
 
+export {cRef};
+

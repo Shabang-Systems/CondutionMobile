@@ -1,4 +1,4 @@
-const {cRef} = import("./CacheManager");
+import {cRef} from "./CacheManager";
 
 const util = {
     select: {
@@ -429,4 +429,6 @@ async function getItemAvailability(userID) {
     await (await getInboxTasks(userID)).forEach((id) => blockstatus[id] = true);
     return blockstatus;
 }
+
+export {util, getPerspectives, getTopLevelProjects, getProjectStructure, getInboxTasks, getProjectsandTags};
 
