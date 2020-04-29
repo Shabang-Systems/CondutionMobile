@@ -9,11 +9,13 @@ const Page: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-          <IonText color="secondary">
-              boo
-          </IonText>
-      </IonHeader>
+        <IonHeader>
+            <IonToolbar>
+                <IonButtons slot="start"> 
+                    <IonMenuButton />
+                </IonButtons>
+            </IonToolbar>
+        </IonHeader>
     </IonPage>
   );
 };

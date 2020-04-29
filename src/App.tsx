@@ -33,7 +33,6 @@ const App: React.FC = () => {
                 <Menu />
                 <IonRouterOutlet id="main">
                     <Route path="/" component={Page} exact />
-                    <Redirect from="/" to="/" exact />
               </IonRouterOutlet>
             </IonSplitPane>
         </IonReactRouter>
