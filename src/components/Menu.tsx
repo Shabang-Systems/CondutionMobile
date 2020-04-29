@@ -12,7 +12,7 @@ import {
 
 import React, {Component} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { chevronForwardCircle } from 'ionicons/icons';
+import { chevronForwardCircle, layers } from 'ionicons/icons';
 import './Menu.css';
 import '../backend/CacheManager';
 import '../backend/PerspectiveManager';
@@ -41,21 +41,22 @@ class Menu extends Component<{} & RouteComponentProps<{}>, MenuState>{
 
     render() {
         const { location } = this.props;
-        return (<IonMenu contentId="main" type="overlay">
+        return (
+        <IonMenu contentId="main" type="overlay">
           <IonContent>
             <IonList>
-                  <IonMenuToggle key={0} autoHide={false}>
-                      <IonItem className={location.pathname === "/" ? 'selected' : ''} routerLink={"/page/Page"} routerDirection="none" lines="none" detail={false}>
-                          <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
-                          <IonLabel id="menu-upcoming">Upcoming</IonLabel>
+                  <IonMenuToggle id="upcoming-toggle" key={0} autoHide={false}>
+                      <IonItem className={location.pathname === "/" ? 'selected menu-upcoming' : 'menu-upcoming'} routerLink={"/"} routerDirection="none" lines="none" detail={false}>
+                          <IonIcon class="menu-icon" slot="start" icon={chevronForwardCircle}/>
+                          <IonLabel class="menu-text">Upcoming</IonLabel>
                         </IonItem>
                   </IonMenuToggle>
                   <IonLabel class="menu-label">Perspectives</IonLabel>
                   {this.state.perspectives.map((pName:String)=>{
                     return (
-                        <IonItem className={location.pathname === "/page/Perspective" ? 'selected' : ''} routerLink={"/page/Perspsective"} routerDirection="none" lines="none" detail={false}>
-                            <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
-                            <IonLabel id="menu-upcoming">{pName}</IonLabel>
+                        <IonItem className={location.pathname === "/page/Perspective" ? 'selected menu-item' : 'menu-item'} routerLink={"/page/Perspsective"} routerDirection="none" lines="none" detail={false}>
+                            <IonIcon slot="start" icon={layers}></IonIcon>
+                            <IonLabel class="menu-text">{pName}</IonLabel>
                         </IonItem>
 
                     );

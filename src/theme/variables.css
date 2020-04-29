@@ -3,9 +3,9 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
-    --ion-background-color: #f4f4f4;
-    --ion-background-color-rgb: 244, 244, 244;
-
+  --ion-background-color: #f4f4f4;
+  --ion-background-color-rgb: 244, 244, 244;
+  --ion-menu-accent: #1a283d;
 
   /** primary **/
   --ion-color-primary: #434d5f;
