@@ -1,4 +1,4 @@
-import './FirebaseManager';
+const {getTasksWithQuery, getTaskInformation, getProjectsandTags, util} = import('./FirebaseManager');
 
 const perspectiveHandler = function(){
     let cgs = {

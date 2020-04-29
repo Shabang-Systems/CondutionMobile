@@ -4,7 +4,7 @@ let firebase = require("firebase/app");
 require("firebase/auth"); 
 require("firebase/firestore");
 
-const obj = require("./secrets")
+const obj = require("./../secrets")
 
 
 // Initialize Firebase Application

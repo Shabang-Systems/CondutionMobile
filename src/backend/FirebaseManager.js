@@ -1,3 +1,5 @@
+const {cRef} = import("./CacheManager");
+
 const util = {
     select: {
         compare: (lhs, cmp, rhs) => {
