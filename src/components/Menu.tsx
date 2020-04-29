@@ -19,14 +19,24 @@ import '../backend/PerspectiveManager';
 import {getTopLevelProjects, getPerspectives} from '../backend/FirebaseManager';
 import 'font-awesome/css/font-awesome.min.css';
 
-let ps : String[] = [];
-(getPerspectives("TcZUcte5MFOx410Q8WJ6mRW1Pco1").then((e:any)=>{
-    ps.push(e[2].map((p:any)=>p.name));
-}));
+interface MenuState {
+    perspectives: any,
+    projects: any
+}
 
-class Menu extends Component<{} & RouteComponentProps<{}>, {}>{
+class Menu extends Component<{} & RouteComponentProps<{}>, MenuState>{
     constructor(props:any) {
         super(props);
+        this.state = {perspectives:[], projects:[]};
+    }
+
+    componentDidMount() {
+        let ps : String[] = [];
+        let comp = this;
+        (getPerspectives("TcZUcte5MFOx410Q8WJ6mRW1Pco1").then(function(e:any) {
+            ps = (e[2].map((p:any)=>p.name));
+            comp.setState({perspectives: ps});
+        }));
     }
 
     render() {
@@ -41,7 +51,7 @@ class Menu extends Component<{} & RouteComponentProps<{}>, {}>{
                         </IonItem>
                   </IonMenuToggle>
                   <IonLabel class="menu-label">Perspectives</IonLabel>
-                  {ps.map((pName:String)=>{
+                  {this.state.perspectives.map((pName:String)=>{
                     return (
                         <IonItem className={location.pathname === "/page/Perspective" ? 'selected' : ''} routerLink={"/page/Perspsective"} routerDirection="none" lines="none" detail={false}>
                             <IonIcon slot="start" icon={chevronForwardCircle} color="#000000"/>
