@@ -1,3 +1,5 @@
+import './FirebaseManager';
+
 const perspectiveHandler = function(){
     let cgs = {
         taskFilter: /([^\w\d\s\[]{1,2}[\w\s]+)/gi,
