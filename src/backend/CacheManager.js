@@ -9,13 +9,14 @@ const obj = require("./../secrets")
 
 // Initialize Firebase Application
 // TODO TODO TODO !!!! Change this on deploy
-firebase.initializeApp(obj.dbkeys.deploy);
+firebase.initializeApp(obj.dbkeys.debug);
 
 const initFirebase = () => {
     // Firebase App (the core Firebase SDK) is always required and
     // must be listed before other Firebase SDKs
     // const firebase = require("firebase/app");
 
+    firebase.auth().signInWithEmailAndPassword("backend@shabang.cf", "seenoevil");
     return [firebase.firestore(), firebase.firestore];
 }
 
