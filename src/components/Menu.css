@@ -1,13 +1,19 @@
 *::-webkit-scrollbar { 
-    display: none;  /* Scrollbar Fix, Chrome? and Apple Runtime */
+    display: none !important;  /* Scrollbar Fix, Chrome? and Apple Runtime */
 }
 
-ion-menu .inner-scroll::-webkit-scrollbar {
-    display: none;
+::-webkit-scrollbar {
+    display: none !important;
 }
 
 ion-menu ion-content {
     --background: var(--ion-menu-background);
+    --overflow: auto;
+    color: red !important;
+}
+
+ion-content::-webkit-scrollbar {
+    display: none;
 }
 
 ion-menu.md ion-content {

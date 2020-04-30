@@ -16,7 +16,6 @@ const initFirebase = () => {
     // must be listed before other Firebase SDKs
     // const firebase = require("firebase/app");
 
-    firebase.auth().signInWithEmailAndPassword("backend@shabang.cf", "seenoevil");
     return [firebase.firestore(), firebase.firestore];
 }
 

@@ -1,6 +1,15 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+/** Themeing to disable scrollbars **/
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-y {
+    scrollbar-width: none;
+}
+
 /** Ionic CSS Variables **/
 :root {
   --ion-background-color: #f4f4f4;

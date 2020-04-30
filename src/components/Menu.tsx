@@ -59,20 +59,24 @@ class Menu extends Component<MenuProps & RouteComponentProps<{}>, MenuState>{
                   <IonLabel class="menu-label">Perspectives</IonLabel>
                   {this.state.perspectives.map((p:any)=>{
                     return (
+                      <IonMenuToggle class="perspective-toggle" key={p.id} autoHide={false}>
                         <IonItem className={location.pathname === "/perspective/"+p.id ? 'selected menu-item menu-perspective' : 'menu-item menu-perspective'} routerLink={"/perspective/"+p.id} routerDirection="none" lines="none" detail={false}>
                             <IonIcon slot="start" icon={layers}></IonIcon>
                             <IonLabel class="menu-text">{p.name}</IonLabel>
                         </IonItem>
+                      </IonMenuToggle>
                     );
                   })} 
                   <br />
                   <IonLabel class="menu-label">Projects</IonLabel>
                   {this.state.projects.map((p:any)=>{
                     return (
+                      <IonMenuToggle class="perspective-toggle" key={p.id} autoHide={false}>
                         <IonItem className={location.pathname === "/project/"+p.id ? 'selected menu-item menu-project' : 'menu-item menu-project'} routerLink={"/project/"+p.id} routerDirection="none" lines="none" detail={false}>
                             <IonIcon slot="start" icon={albums}></IonIcon>
                             <IonLabel class="menu-text">{p.name}</IonLabel>
                         </IonItem>
+                      </IonMenuToggle>
                     );
                   })} 
             </IonList>
