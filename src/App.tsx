@@ -31,7 +31,7 @@ const App: React.FC = () => {
     <IonApp>
         <IonReactRouter>
             <IonSplitPane contentId="main">
-                <Menu />
+                <Menu user="TcZUcte5MFOx410Q8WJ6mRW1Pco1" />
                 <IonRouterOutlet id="main">
                     <Route path="/" component={Page} exact />
               </IonRouterOutlet>

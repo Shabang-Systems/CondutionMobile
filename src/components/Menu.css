@@ -1,5 +1,13 @@
+*::-webkit-scrollbar { 
+    display: none;  /* Scrollbar Fix, Chrome? and Apple Runtime */
+}
+
+ion-menu .inner-scroll::-webkit-scrollbar {
+    display: none;
+}
+
 ion-menu ion-content {
-    --background: var(--ion-background-color);
+    --background: var(--ion-menu-background);
 }
 
 ion-menu.md ion-content {
@@ -11,6 +19,9 @@ ion-menu.md ion-content {
 
 ion-menu.md ion-list {
   padding: 20px 0;
+    background-color: var(--ion-menu-background);
+
+    --background: var(--ion-menu-background);
 }
 
 ion-menu.md ion-note {
@@ -41,6 +52,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
 ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;
+  --background: var(--ion-menu-background) !important;
   border-radius: 4px;
 
 }
@@ -67,6 +79,9 @@ ion-menu.ios ion-content {
 
 ion-menu.ios ion-list {
   padding: 20px 0 0 0;
+    background-color: var(--ion-menu-background);
+
+    --background: var(--ion-menu-background);
 }
 
 ion-menu.ios ion-note {
@@ -77,7 +92,7 @@ ion-menu.ios ion-note {
 ion-menu.ios ion-item {
   --padding-start: 16px;
   --padding-end: 16px;
-  --min-height: 50px;
+  --background: var(--ion-menu-background) !important;
 }
 
 ion-menu.ios ion-item ion-icon {
@@ -116,7 +131,6 @@ ion-item.selected {
 ion-menu.ios ion-item.menu-item {
     /*padding-left: 15px;*/
     --padding-start: 30px !important;
-    --min-height: 10px;
     font-weight: 500;
     font-size: 18px;
 }
@@ -124,7 +138,6 @@ ion-menu.ios ion-item.menu-item {
 ion-menu.md ion-item.menu-item {
     /*padding-left: 15px;*/
     --padding-start: 30px !important;
-    --min-height: 10px;
     font-weight: 500;
     font-size: 18px;
 }
@@ -133,9 +146,16 @@ ion-menu.md ion-item.menu-upcoming {
     padding-bottom: 10px;
 }
 
+ion-item.menu-project {
+    /*padding-left: 15px;*/
+    --min-height: 3px;
+    font-size: 1px;
+}
+
 ion-item.menu-upcoming {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
+    padding-bottom: 10px;
 }
 
 ion-menu.ios ion-label.menu-label {
@@ -155,4 +175,6 @@ ion-menu.md ion-label.menu-label {
 ion-label.menu-text {
     color: var(--ion-menu-accent) !important;
 }
+
+
 

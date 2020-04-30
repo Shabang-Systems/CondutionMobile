@@ -12,7 +12,7 @@ import {
 
 import React, {Component} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { chevronForwardCircle, layers } from 'ionicons/icons';
+import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
 import './Menu.css';
 import '../backend/CacheManager';
 import '../backend/PerspectiveManager';
@@ -24,22 +24,23 @@ interface MenuState {
     projects: any
 }
 
-class Menu extends Component<{} & RouteComponentProps<{}>, MenuState>{
+interface MenuProps {
+    user: String,
+}
+
+class Menu extends Component<MenuProps & RouteComponentProps<{}>, MenuState>{
     constructor(props:any) {
         super(props);
         this.state = {perspectives:[], projects:[]};
     }
 
     componentDidMount() {
-        let ps : String[] = [];
         let comp = this;
-        (getPerspectives("TcZUcte5MFOx410Q8WJ6mRW1Pco1").then(function(e:any) {
-            ps = (e[2].map((p:any)=>p.name));
-            comp.setState({perspectives: ps});
+        (getPerspectives(this.props.user).then(function(e:any) {
+            comp.setState({perspectives: e[2]});
         }));
-        (getTopLevelProjects("TcZUcte5MFOx410Q8WJ6mRW1Pco1").then(function(e:any) {
-            ps = (e[2].map((p:any)=>p.name));
-            comp.setState({projects: ps});
+        (getTopLevelProjects(this.props.user).then(function(e:any) {
+            comp.setState({projects: e[2]});
         }));
     }
 
@@ -56,21 +57,21 @@ class Menu extends Component<{} & RouteComponentProps<{}>, MenuState>{
                         </IonItem>
                   </IonMenuToggle>
                   <IonLabel class="menu-label">Perspectives</IonLabel>
-                  {this.state.perspectives.map((pName:String)=>{
+                  {this.state.perspectives.map((p:any)=>{
                     return (
-                        <IonItem className={location.pathname === "/page/perspective" ? 'selected menu-item' : 'menu-item'} routerLink={"/page/Perspsective"} routerDirection="none" lines="none" detail={false}>
+                        <IonItem className={location.pathname === "/perspective/"+p.id ? 'selected menu-item menu-perspective' : 'menu-item menu-perspective'} routerLink={"/perspective/"+p.id} routerDirection="none" lines="none" detail={false}>
                             <IonIcon slot="start" icon={layers}></IonIcon>
-                            <IonLabel class="menu-text">{pName}</IonLabel>
+                            <IonLabel class="menu-text">{p.name}</IonLabel>
                         </IonItem>
                     );
                   })} 
                   <br />
                   <IonLabel class="menu-label">Projects</IonLabel>
-                  {this.state.projects.map((pName:String)=>{
+                  {this.state.projects.map((p:any)=>{
                     return (
-                        <IonItem className={location.pathname === "/page/project" ? 'selected menu-item' : 'menu-item'} routerLink={"/page/perspsective"} routerDirection="none" lines="none" detail={false}>
-                            <IonIcon slot="start" icon={layers}></IonIcon>
-                            <IonLabel class="menu-text">{pName}</IonLabel>
+                        <IonItem className={location.pathname === "/project/"+p.id ? 'selected menu-item menu-project' : 'menu-item menu-project'} routerLink={"/project/"+p.id} routerDirection="none" lines="none" detail={false}>
+                            <IonIcon slot="start" icon={albums}></IonIcon>
+                            <IonLabel class="menu-text">{p.name}</IonLabel>
                         </IonItem>
                     );
                   })} 
