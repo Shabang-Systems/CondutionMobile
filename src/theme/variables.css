@@ -169,7 +169,7 @@ http://ionicframework.com/docs/theming/ */
   .ios body {
     --ion-background-color: #161616;
     --ion-background-color-rgb: 22,22,22;
-    --ion-menu-accent: #BCC0C9;
+    --ion-menu-accent: #d4d5d8;
     --ion-menu-background: #232323;
 
     --ion-text-color: #ffffff;
@@ -209,7 +209,7 @@ http://ionicframework.com/docs/theming/ */
   .md body {
     --ion-background-color: #161616;
     --ion-background-color-rgb: 22,22,22;
-    --ion-menu-accent: #BCC0C9;
+    --ion-menu-accent: #d4d5d8;
     --ion-menu-background: #232323;
 
     --ion-text-color: #ffffff;
