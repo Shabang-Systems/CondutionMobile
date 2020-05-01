@@ -5,7 +5,20 @@ import { useParams } from 'react-router';
 import './Upcoming.css';
 
 
-class Upcoming extends Component<{},{}>{
+interface UpcomingState {
+}
+
+interface UpcomingProps {
+    user: String,
+    engine: any,
+}
+
+class Upcoming extends Component<UpcomingProps, UpcomingState>{
+
+    constructor(props:any) {
+        super(props);
+    }
+
     render() {
         return (
         <IonPage>

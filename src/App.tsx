@@ -1,8 +1,8 @@
 import Page from './pages/Page';
 import Upcoming from './pages/Upcoming';
 import Menu from './components/Menu';
-import React from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import React, {Component} from 'react';
+import { IonApp, IonRouterOutlet, IonSplitPane, IonText } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
@@ -25,23 +25,54 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* Firebase and the Engine */
+let firebase = require("firebase/app");
+require("firebase/firestore");
+require("firebase/auth");
 
-const App: React.FC = () => {
+let E = require("./backend/CondutionEngine");
+E.start(firebase);
 
-  return (
-    <IonApp>
-        <IonReactRouter>
-            <IonSplitPane contentId="main">
-                <Menu user="TcZUcte5MFOx410Q8WJ6mRW1Pco1" />
-                <IonRouterOutlet id="main">
-                    <Route path="/" component={Upcoming} exact />
-                    <Route path="/perspective/:name" component={Page} exact />
-                    <Route path="/project/:name" component={Page} exact />
-              </IonRouterOutlet>
-            </IonSplitPane>
-        </IonReactRouter>
-    </IonApp>
-  );
+
+interface AppState {
+    authenticatedUser: any,
+}
+
+class App extends Component<{}, AppState>{
+    constructor(props:any) {
+        super(props);
+        this.state = {authenticatedUser:null};
+    }
+
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user:any) => this.setState({authenticatedUser:user}));
+    }
+
+    render() {
+        return (
+            <IonApp>
+                <IonReactRouter>
+                {(()=>{
+                    if (this.state.authenticatedUser) {
+                        return (
+                            <IonSplitPane contentId="main">
+                                <Menu engine={E} user={firebase.auth().currentUser.uid} />
+                                <IonRouterOutlet id="main">
+                                    <Route path="/" component={Upcoming} exact />
+                                    <Route path="/perspective/:name" component={Page} exact />
+                                    <Route path="/project/:name" component={Page} exact />
+                              </IonRouterOutlet>
+                            </IonSplitPane>
+                        )
+                    } else {
+                        // TODO: Add auth interface
+                        return (<IonText><h1>Sad Trombone Day</h1></IonText>);
+                    }
+                })()}
+                </IonReactRouter>
+            </IonApp>
+        );
+    }
 };
 
 export default App;

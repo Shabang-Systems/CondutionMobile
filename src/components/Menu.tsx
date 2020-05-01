@@ -14,10 +14,8 @@ import React, {Component} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
 import './Menu.css';
-import '../backend/CacheManager';
-import '../backend/PerspectiveManager';
-import {getTopLevelProjects, getPerspectives} from '../backend/FirebaseManager';
 import 'font-awesome/css/font-awesome.min.css';
+
 
 interface MenuState {
     perspectives: any,
@@ -26,6 +24,7 @@ interface MenuState {
 
 interface MenuProps {
     user: String,
+    engine: any,
 }
 
 class Menu extends Component<MenuProps & RouteComponentProps<{}>, MenuState>{
@@ -36,10 +35,10 @@ class Menu extends Component<MenuProps & RouteComponentProps<{}>, MenuState>{
 
     componentDidMount() {
         let comp = this;
-        (getPerspectives(this.props.user).then(function(e:any) {
+        (this.props.engine.db.getPerspectives(this.props.user).then(function(e:any) {
             comp.setState({perspectives: e[2]});
         }));
-        (getTopLevelProjects(this.props.user).then(function(e:any) {
+        (this.props.engine.db.getTopLevelProjects(this.props.user).then(function(e:any) {
             comp.setState({projects: e[2]});
         }));
     }
