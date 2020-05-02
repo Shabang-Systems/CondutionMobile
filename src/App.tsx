@@ -68,7 +68,7 @@ class App extends Component<{}, AppState>{
                     } else {
                         // TODO: Add auth interface
                         return (
-                            <Auth engine={E} />
+                            <Auth engine={E} authObj={firebase.auth()}/>
                         );
                     }
                 })()}

@@ -6,16 +6,21 @@ import './Auth.css';
 
 
 interface AuthState {
+    email: any,
+    password: any,
+    name: any,
 }
 
 interface AuthProps {
     engine: any,
+    authObj: any,
 }
 
 class Auth extends Component<AuthProps, AuthState>{
 
     constructor(props:any) {
         super(props);
+        this.state = {email: "", password: "", name: ""};
     }
 
     render() {
@@ -28,15 +33,21 @@ class Auth extends Component<AuthProps, AuthState>{
                             <IonText><h1 id="greeting-auth">What's up?</h1><IonText><b>Welcome to Condution.</b></IonText></IonText>
                             <IonList id="auth-items">
                                 <IonItem>
-                                    <IonInput placeholder="Email" type="email"></IonInput>
+                                    <IonInput placeholder="Email" type="email" onIonChange={(e)=>this.setState({email: e.detail.value})} value={this.state.email}></IonInput>
                                 </IonItem>
                                 <IonItem>
-                                    <IonInput placeholder="Password" type="password"></IonInput>
+                                <IonInput placeholder="Password" type="password" onIonChange={(e)=>this.setState({password: e.detail.value})} value={this.state.password}></IonInput>
                                 </IonItem>
                             </IonList>
                             <div id="auth-actions">
                                 <IonButton id="signup" size="small" color="primary" fill="outline">Signup</IonButton>
-                                <IonButton id="login" size="small" color="secondary">Login</IonButton>
+                                <IonButton id="login" size="small" color="secondary" onClick={()=>{
+                                    // Login
+                                    console.log(this.state.email);
+                                    this.props.authObj.signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error:any) {
+                                        console.error(error);
+                                    });
+                                }}>Login</IonButton>
                             </div>
                         </div>
                     </div>
