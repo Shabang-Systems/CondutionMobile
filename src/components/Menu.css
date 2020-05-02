@@ -84,6 +84,7 @@ ion-menu.ios ion-content {
 }
 
 ion-menu.ios ion-list {
+    margin-top: 30px;
   padding: 20px 0 0 0;
     background-color: var(--ion-menu-background);
 
