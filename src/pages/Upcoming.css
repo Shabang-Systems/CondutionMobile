@@ -11,10 +11,19 @@ ion-header {
     margin-right: 10px;
 }
 
-.upcoming-badge {
+.upcoming-sublabel {
     font-weight: 600;
     margin: 10px 0 10px 14px;
     font-size: 18px;
+} 
+
+ion-content.ios .task-list {
+    margin-top: 3px;
 }
+
+ion-content.md .task-list {
+    margin-top: 0px;
+}
+
 
 

@@ -8,5 +8,18 @@ ion-checkbox {
 
 ion-item {
     --padding-end: 0px !important;
+    --padding-start: 4px !important;
+}
+
+ion-item.ios {
+    --border-style: none;
+}
+
+ion-item.md {
+    --min-height: 4px;
+}
+
+ion-item.md ion-checkbox {
+    margin-right: 10px;
 }
 

@@ -59,7 +59,7 @@ class App extends Component<{}, AppState>{
                             <IonSplitPane contentId="main">
                                 <Menu engine={E} user={firebase.auth().currentUser.uid} />
                                 <IonRouterOutlet id="main">
-                                    <Route path="/" component={Upcoming} exact />
+                                <Route path="/" component={(()=>{return (<Upcoming user={firebase.auth().currentUser.uid} engine={E}></Upcoming>);})} exact />
                                     <Route path="/perspective/:name" component={Page} exact />
                                     <Route path="/project/:name" component={Page} exact />
                               </IonRouterOutlet>

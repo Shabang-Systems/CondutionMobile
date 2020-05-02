@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 
 interface TaskState {
+    name: String,
 }
 
 interface TaskProps {
@@ -18,16 +19,21 @@ interface TaskProps {
 class Task extends Component<TaskProps, TaskState>{
     constructor(props:any) {
         super(props);
+        this.state = {name: ""};
     }
 
     componentDidMount() {
+        let cmp = this;
+        this.props.engine.db.getTaskInformation(this.props.userID, this.props.taskID).then(function(e:any) {
+            cmp.setState({name: e.name});
+        });
     }
 
     render() {
         return (
             <IonItem>
                 <IonCheckbox></IonCheckbox>
-                <IonLabel>Dudud</IonLabel>
+                <IonLabel>{this.state.name}</IonLabel>
             </IonItem>
         );
     };

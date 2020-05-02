@@ -40,22 +40,8 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                         <IonTitle size="large">Upcoming</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <IonLabel className="upcoming-badge">Unsorted</IonLabel>
+                <IonLabel className="upcoming-sublabel">Unsorted</IonLabel>
                 <IonList className="task-list">
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
-                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
                     <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
                 </IonList>
             </IonContent>
