@@ -48,6 +48,8 @@ ion-list {
     margin-right: 10px;
     border-radius: 5px;
     --ion-background-color: var(--ion-color-light);
+    --ion-item-background: var(--ion-color-light);
+    --background: var(--ion-color-light);
 }
 
 #auth-items {
