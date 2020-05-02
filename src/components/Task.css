@@ -6,3 +6,7 @@ ion-checkbox {
     --background-checked: var(--task-checkbox-feature);
 }
 
+ion-item {
+    --padding-end: 0px !important;
+}
+
