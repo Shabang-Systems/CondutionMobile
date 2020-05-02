@@ -79,6 +79,20 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0,0,0;
   --ion-color-light-shade: #dbdbe0;
   --ion-color-light-tint: #fafaff;
+
+  --task-checkbox: #ccc;
+  --task-checkbox-feature: #e0e0e0;
+  --task-checkbox-feature-alt: #c5d0ef;
+  --task-checkbox-ds: #f8974a;
+  --task-checkbox-ds-feature: #f5c09d;
+  --task-checkbox-ds-background: #f4eae4;
+  --task-checkbox-od: #c04f40;
+  --task-checkbox-od-feature: #ed938c;
+  --task-checkbox-od-background: #f7d7d5;
+  --task-checkmark: #2b3749;
+  --task-checkmark-ds: #f4721a;
+  --task-checkmark-od: #d32f19;
+
 }
 
 @media (prefers-color-scheme: dark) {

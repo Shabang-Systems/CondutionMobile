@@ -1,0 +1,8 @@
+ion-checkbox {
+    --checkmark-width: 3px;
+    --checkmark-color: var(--task-checkmark);
+    --border-color: var(--task-checkbox);
+    --border-color-checked: var(--task-checkbox);
+    --background-checked: var(--task-checkbox-feature);
+}
+
