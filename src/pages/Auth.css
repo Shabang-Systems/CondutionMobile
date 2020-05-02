@@ -1,4 +1,100 @@
-.head-toolbar {
-    --background: var(--ion-background-color);
+ion-content#auth-content-area {
+    --padding-start: 10px;
+    --background: transparent;
+    --ion-background-color: transparent;
+    background: transparent !important;
+}
+
+ion-item {
+    --padding-start: 0px;
+    --padding-end: 15px;
+}
+
+ion-list {
+    padding-bottom: 10px;
+}
+
+#auth-image {
+    background: url(../static/auth-background.jpg);
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 110%;
+    width: 110%;
+    z-index: -1;
+    position: fixed;
+    overflow: hidden;
+    transform: translate(-20px, -20px);
+}
+
+#greeting-auth {
+    font-weight: 700;
+    color: var(--ion-color-secondary);
+
+}
+
+#center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#centered {
+    height: auto;
+    background-color: var(--ion-color-light);
+    padding: 0 15px 15px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    --ion-background-color: var(--ion-color-light);
+}
+
+#auth-items {
+    padding-top: 5px;
+}
+
+#auth-actions {
+    padding-top: 5px;
+    margin-left: -5px;
+}
+
+#login {
+    margin-left: 10px;
+}
+
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #centered {
+        width: 90vw;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #centered {
+        width: 80vw;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #centered {
+        width: 70vw;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #centered {
+        width: 500px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #centered {
+        width: 500px;
+    }
 }
 
