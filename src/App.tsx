@@ -42,10 +42,10 @@ interface AppState {
 class App extends Component<{}, AppState>{
     constructor(props:any) {
         super(props);
-        this.state = {authenticatedUser:null};
+        this.state = {authenticatedUser:undefined};
     }
 
-    componentWillMount() {
+    componentDidMount() {
         firebase.auth().onAuthStateChanged((user:any) => this.setState({authenticatedUser:user}));
     }
 
@@ -65,8 +65,12 @@ class App extends Component<{}, AppState>{
                               </IonRouterOutlet>
                             </IonSplitPane>
                         )
+                    } else if (this.state.authenticatedUser === undefined) {
+                        // Firebase not loaded.
+                        return (<IonText>CrappyLoadingScreen</IonText>);
                     } else {
                         // TODO: Add auth interface
+                        setTimeout(()=>{}, 500);
                         return (
                             <Auth engine={E} authObj={firebase.auth()}/>
                         );

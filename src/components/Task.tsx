@@ -26,6 +26,7 @@ class Task extends Component<TaskProps, TaskState>{
     render() {
         return (
             <IonItem>
+                <IonCheckbox></IonCheckbox>
                 <IonLabel>Dudud</IonLabel>
             </IonItem>
         );
