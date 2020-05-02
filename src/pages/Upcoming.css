@@ -1,4 +1,24 @@
+ion-header {
+    padding-bottom: 10px;
+}
+
 .head-toolbar {
     --background: var(--ion-background-color);
 }
+
+.rhead {
+    padding-right: 10px;
+}
+
+.task-list {
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.upcoming-badge {
+    font-weight: 600;
+    margin: 10px 0 10px 14px;
+    font-size: 18px;
+}
+
 
