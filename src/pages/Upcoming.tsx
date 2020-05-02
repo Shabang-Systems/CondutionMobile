@@ -23,7 +23,7 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
     render() {
         return (
         <IonPage>
-            <IonHeader translucent={true}>
+        <IonHeader id="e" translucent={true}>
                 <IonToolbar class="head-toolbar">
                     <IonButtons slot="start"> 
                         <IonMenuButton />
@@ -42,6 +42,18 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                 </IonHeader>
                 <IonLabel className="upcoming-badge">Unsorted</IonLabel>
                 <IonList className="task-list">
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
+                    <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
                     <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
                     <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
                     <Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>
