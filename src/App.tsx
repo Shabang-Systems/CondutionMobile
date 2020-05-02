@@ -1,5 +1,6 @@
 import Page from './pages/Page';
 import Upcoming from './pages/Upcoming';
+import Auth from './pages/Auth';
 import Menu from './components/Menu';
 import React, {Component} from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane, IonText } from '@ionic/react';
@@ -66,7 +67,9 @@ class App extends Component<{}, AppState>{
                         )
                     } else {
                         // TODO: Add auth interface
-                        return (<IonText><h1>Sad Trombone Day</h1></IonText>);
+                        return (
+                            <Auth engine={E} />
+                        );
                     }
                 })()}
                 </IonReactRouter>
