@@ -23,6 +23,7 @@
     "font-awesome": "^4.7.0",
     "ionicons": "^5.0.0",
     "jquery": "^3.5.1",
+    "moment-timezone": "^0.5.28",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router": "^5.1.2",
@@ -53,7 +54,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.0.1",
-    "@types/jquery": "^3.3.38"
+    "@types/jquery": "^3.3.38",
+    "@types/moment-timezone": "^0.5.13"
   },
   "description": "Tasks? Done. That was simple."
 }

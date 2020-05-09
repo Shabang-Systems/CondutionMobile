@@ -6,6 +6,24 @@ ion-checkbox {
     --background-checked: var(--task-checkbox-feature);
 }
 
+ion-checkbox.od {
+    --checkmark-width: 3px;
+    --checkmark-color: var(--task-checkmark-od);
+    --border-color: var(--task-checkbox-od);
+    --border-color-checked: var(--task-checkbox-od);
+    --background: var(--task-checkbox-od-background);
+    --background-checked: var(--task-checkbox-od-feature);
+}
+
+ion-checkbox.ds {
+    --checkmark-width: 3px;
+    --checkmark-color: var(--task-checkmark-ds);
+    --border-color: var(--task-checkbox-ds);
+    --border-color-checked: var(--task-checkbox-ds);
+    --background: var(--task-checkbox-ds-background);
+    --background-checked: var(--task-checkbox-ds-feature);
+}
+
 ion-item {
     --padding-end: 0px !important;
     --padding-start: 7px !important;
