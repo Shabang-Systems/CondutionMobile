@@ -6,9 +6,9 @@
   "webDir": "public",
   "cordova": {},
   "server": {
-    "url": "http://localhost:8100",
+    "url": "http://192.168.86.20:8100",
     "cleartext": true,
-    "originalUrl": "http://localhost:8100",
+    "originalUrl": "http://100.74.243.3:8100",
     "originalCleartext": true
   }
 }

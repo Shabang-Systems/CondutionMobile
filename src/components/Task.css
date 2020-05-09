@@ -8,7 +8,8 @@ ion-checkbox {
 
 ion-item {
     --padding-end: 0px !important;
-    --padding-start: 4px !important;
+    --padding-start: 7px !important;
+    --background-activated-opacity: 0;
 }
 
 ion-item.ios {

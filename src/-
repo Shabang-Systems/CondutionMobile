@@ -26,12 +26,12 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
     componentDidMount() {
         let E = this.props.engine;
         let usr = this.props.user;
-        //let setState = this.setState;
+        let setState = this.setState;
         (async function() {
             let aval = await E.db.getItemAvailability(usr);
             let ibads = await E.db.getInboxandDS(usr, aval);
             return ibads;
-        })().then((ibads: any) => this.setState({unsortedTasks: ibads[0], DSTasks: ibads[1]}));
+        })().then(ibads=>setState({unsortedTasks: ibads[0], DSTasks: ibads[1]}));
     }
 
     render() {
@@ -57,10 +57,14 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                 <IonLabel className="upcoming-sublabel">Unsorted</IonLabel>
 
                 <IonList className="task-list">
-                {this.state.unsortedTasks.map((tid: any) => {
-                    console.log(tid);
-                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid}/>)
-                })}
+                {()=>{
+                    // Normal for loop because of order presperance
+                    let tasks:any[] = [];
+                    for (let i of this.state.unsortedTasks) {
+                        tasks.push(<Task userID={this.props.user} engine={this.props.engine} taskID="5u0iADGGyrZVGkux8n0i"/>);
+                    }
+                    return tasks;
+                }}
                 </IonList>
             </IonContent>
         </IonPage>
