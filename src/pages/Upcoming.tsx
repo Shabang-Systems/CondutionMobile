@@ -1,9 +1,11 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem, CreateAnimation, IonRefresher, IonRefresherContent } from '@ionic/react';
+import { RefresherEventDetail } from '@ionic/core';
 import { chevronForwardCircle, layers, albums, settingsOutline} from 'ionicons/icons';
 import React, {Component} from 'react';
 import { useParams } from 'react-router';
 import Task from '../components/Task';
 import './Upcoming.css';
+import $ from "jquery";
 
 
 interface UpcomingState {
@@ -23,15 +25,16 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
         this.state = {unsortedTasks: [], DSTasks: []};
     }
 
-    componentDidMount() {
+    async loadTasks() {
         let E = this.props.engine;
         let usr = this.props.user;
-        //let setState = this.setState;
-        (async function() {
-            let aval = await E.db.getItemAvailability(usr);
-            let ibads = await E.db.getInboxandDS(usr, aval);
-            return ibads;
-        })().then((ibads: any) => this.setState({unsortedTasks: ibads[0], DSTasks: ibads[1]}));
+        let aval = await E.db.getItemAvailability(usr);
+        let ibads = await E.db.getInboxandDS(usr, aval);
+        this.setState({unsortedTasks: ibads[0], DSTasks: ibads[1]});
+    }
+
+    componentDidMount() {
+        this.loadTasks()
     }
 
     render() {
@@ -49,6 +52,15 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen={true}>
+            <IonRefresher slot="fixed" onIonRefresh={(event: CustomEvent<RefresherEventDetail>)=>{
+                this.loadTasks().then(
+                   ()=>{setTimeout(()=>{
+                       event.detail.complete()
+                   }, 200)}
+                )}
+            }>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
                 <IonHeader collapse="condense">
                     <IonToolbar class="head-toolbar">
                         <IonTitle size="large">Upcoming</IonTitle>
@@ -58,8 +70,7 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
 
                 <IonList className="task-list">
                 {this.state.unsortedTasks.map((tid: any) => {
-                    console.log(tid);
-                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid}/>)
+                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid} key={tid}/>)
                 })}
                 </IonList>
             </IonContent>

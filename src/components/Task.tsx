@@ -2,9 +2,14 @@ import {IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu,
 
 import React, {Component} from 'react';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
+import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
 import './Task.css';
 import 'font-awesome/css/font-awesome.min.css';
+import $ from "jquery";
 
+// TODO for Android: <uses-permission android:name="android.permission.VIBRATE" /> 
+
+const { Haptics } = Plugins;
 
 interface TaskState {
     name: String,
@@ -31,12 +36,20 @@ class Task extends Component<TaskProps, TaskState>{
 
     render() {
         return (
-            <IonItem>
-                <IonCheckbox></IonCheckbox>
-                <IonLabel>{this.state.name}</IonLabel>
-            </IonItem>
-        );
-    };
+            <IonItem id={this.props.taskID.toString()}>
+            <IonCheckbox onIonChange={(e) => {
+                if(e.detail.checked) {
+
+                    $('#'+this.props.taskID).animate({"margin": "5px 0 5px 0 !important"}, 200);
+                    $("#"+this.props.taskID).slideUp(300);
+                    $('#'+this.props.taskID).css({"opacity": "0.6", "text-decoration": "line-through"});
+                    Haptics.notification({type: HapticsNotificationType.SUCCESS});
+            }
+        }}></IonCheckbox>
+            <IonLabel>{this.state.name}</IonLabel>
+        </IonItem>
+    );
+};
 }
 
 export default Task;
