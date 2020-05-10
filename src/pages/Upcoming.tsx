@@ -4,6 +4,7 @@ import { chevronForwardCircle, layers, albums, settingsOutline} from 'ionicons/i
 import React, {Component} from 'react';
 import { useParams } from 'react-router';
 import Task from '../components/Task';
+import TaskEdit from '../components/TaskEdit';
 import './Upcoming.css';
 import $ from "jquery";
 
@@ -77,15 +78,7 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                     }}/>)
                 })}
                 </IonList>
-                <IonModal isOpen={this.state.showModal}>
-                    <IonHeader translucent={true}>
-                        <IonToolbar>
-                            <IonButtons slot="end">
-                                <IonButton onClick={() => this.setState({showModal: false})}>Close</IonButton>
-                            </IonButtons>
-                        </IonToolbar>
-                    </IonHeader>
-                </IonModal>
+                <TaskEdit engine={this.props.engine} userID={this.props.user} taskID={this.state.isEditing} visibility={this.state.showModal} onHide={()=>this.setState({showModal: false})}></TaskEdit>
             </IonContent>
         </IonPage>
         );
