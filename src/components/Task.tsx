@@ -21,6 +21,7 @@ interface TaskProps {
     engine: any,
     userID: String,
     taskID: String,
+    onEdit: any,
 }
 
 class Task extends Component<TaskProps, TaskState>{
@@ -38,25 +39,35 @@ class Task extends Component<TaskProps, TaskState>{
     componentDidMount() {
         let cmp = this;
         this.props.engine.db.getTaskInformation(this.props.userID, this.props.taskID).then(function(e:any) {
+            let due;
+            let defer;
+            if (e.defer) {
+                defer = new Date(e.defer.seconds*1000);
+            }
+            if (e.due) {
+                due = new Date(e.due.seconds*1000);
+            }
             let defer_current;
             let due_current;
             if(e.isFloating) {
-                defer_current = e.defer ? moment(e.defer).tz(e.timezone).local(true).toDate() : undefined; 
-                due_current = e.due ? moment(e.due).tz(e. timezone).local(true).toDate() : undefined;
+                defer_current = defer ? moment(defer).tz(e.timezone).local(true).toDate() : undefined; 
+                due_current = due ? moment(due).tz(e. timezone).local(true).toDate() : undefined;
             } else {
-                defer_current = e.defer;
-                due_current = e.due;
+                defer_current = defer;
+                due_current = due;
             }
-            if (due_current && new Date() > due_current) $('#check-' + cmp.props.taskID).addClass("od");
-            else if (due_current && cmp.numDaysBetween(new Date(), due_current) <= 1) $('#check-' + cmp.props.taskID).addClass("ds"); 
-            if (defer_current && new Date() < defer_current) $('#' + cmp.props.taskID).css("opacity", "0.3");
+            if (due_current){
+                if(new Date() > due_current) $('#check-' + cmp.props.taskID).addClass("od");
+                else if(cmp.numDaysBetween(new Date(), due_current) <= 1) $('#check-' + cmp.props.taskID).addClass("ds")
+            }; 
+            if (defer_current && new Date() < defer_current) $('#' + cmp.props.taskID).css("opacity", "0.4");
             cmp.setState({name: e.name, style: "boo"});
         });
     }
 
     render() {
         return (
-            <IonItem id={this.props.taskID.toString()}>
+        <IonItem id={this.props.taskID.toString()} button onClick={this.props.onEdit} detail={false}>
             <IonCheckbox id={"check-"+this.props.taskID.toString()} onIonChange={(e) => {
                 if(e.detail.checked) {
                     $('#'+this.props.taskID).animate({"margin": "5px 0 5px 0 !important"}, 200);

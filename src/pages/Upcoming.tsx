@@ -1,4 +1,4 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem, CreateAnimation, IonRefresher, IonRefresherContent } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem, CreateAnimation, IonRefresher, IonRefresherContent, IonModal, IonButton } from '@ionic/react';
 import { RefresherEventDetail } from '@ionic/core';
 import { chevronForwardCircle, layers, albums, settingsOutline} from 'ionicons/icons';
 import React, {Component} from 'react';
@@ -11,6 +11,8 @@ import $ from "jquery";
 interface UpcomingState {
     unsortedTasks: any,
     DSTasks: any,
+    isEditing: String,
+    showModal: boolean,
 }
 
 interface UpcomingProps {
@@ -22,7 +24,7 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
 
     constructor(props:any) {
         super(props);
-        this.state = {unsortedTasks: [], DSTasks: []};
+        this.state = {unsortedTasks: [], DSTasks: [], isEditing: "", showModal: false};
     }
 
     async loadTasks() {
@@ -70,9 +72,15 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
 
                 <IonList className="task-list">
                 {this.state.unsortedTasks.map((tid: any) => {
-                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid} key={tid}/>)
+                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid} key={tid} onEdit={()=>{
+                        this.setState({isEditing: tid, showModal: true});
+                    }}/>)
                 })}
                 </IonList>
+                <IonModal isOpen={this.state.showModal}>
+                    <p>This is modal content</p>
+                    <IonButton onClick={() => this.setState({showModal: false})}>Close Modal</IonButton>
+              </IonModal>
             </IonContent>
         </IonPage>
         );
