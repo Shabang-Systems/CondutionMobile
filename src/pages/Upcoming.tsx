@@ -1,6 +1,6 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem, CreateAnimation, IonRefresher, IonRefresherContent, IonModal, IonButton } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonText, IonIcon, IonLabel, IonList, IonItem, CreateAnimation, IonRefresher, IonRefresherContent, IonModal, IonButton, IonFab, IonFabButton } from '@ionic/react';
 import { RefresherEventDetail } from '@ionic/core';
-import { chevronForwardCircle, layers, albums, settingsOutline} from 'ionicons/icons';
+import { chevronForwardCircle, layers, albums, settingsOutline, add } from 'ionicons/icons';
 import React, {Component} from 'react';
 import { useParams } from 'react-router';
 import Task from '../components/Task';
@@ -8,6 +8,9 @@ import TaskEdit from '../components/TaskEdit';
 import './Upcoming.css';
 import $ from "jquery";
 
+import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
+
+const { Haptics } = Plugins;
 
 interface UpcomingState {
     unsortedTasks: any,
@@ -55,6 +58,13 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen={true}>
+                <IonFab horizontal="end" vertical="bottom" slot="fixed">
+                    <IonFabButton onClick={() => {
+                        Haptics.impact({style: HapticsImpactStyle.Heavy});
+                    }}>
+                        <IonIcon icon={add}></IonIcon>
+                    </IonFabButton>
+                </IonFab>
             <IonRefresher slot="fixed" onIonRefresh={(event: CustomEvent<RefresherEventDetail>)=>{
                 this.loadTasks().then(
                    ()=>{setTimeout(()=>{
