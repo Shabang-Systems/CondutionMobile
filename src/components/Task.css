@@ -42,3 +42,12 @@ ion-item.md ion-checkbox {
     margin-right: 10px;
 }
 
+ion-checkbox {
+    z-index: 1000;
+}
+
+.task-name {
+    z-index: 1000;
+    width: 90%;
+}
+

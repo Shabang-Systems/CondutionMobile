@@ -25,5 +25,9 @@ ion-content.md .task-list {
     margin-top: 0px;
 }
 
+ion-header {
+    --ion-toolbar-background: var(--background);
+}
+
 
 

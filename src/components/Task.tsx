@@ -60,23 +60,26 @@ class Task extends Component<TaskProps, TaskState>{
                 if(new Date() > due_current) $('#check-' + cmp.props.taskID).addClass("od");
                 else if(cmp.numDaysBetween(new Date(), due_current) <= 1) $('#check-' + cmp.props.taskID).addClass("ds")
             }; 
-            if (defer_current && new Date() < defer_current) $('#' + cmp.props.taskID).css("opacity", "0.4");
+            if (defer_current && new Date() < defer_current) $('#container-' + cmp.props.taskID).css("opacity", "0.4");
             cmp.setState({name: e.name, style: "boo"});
         });
     }
 
     render() {
         return (
-        <IonItem id={this.props.taskID.toString()} button onClick={this.props.onEdit} detail={false}>
-            <IonCheckbox id={"check-"+this.props.taskID.toString()} onIonChange={(e) => {
+        <IonItem id={"container-"+this.props.taskID.toString()}>
+        <IonCheckbox id={"check-"+this.props.taskID.toString()} onIonChange={(e) => {
                 if(e.detail.checked) {
-                    $('#'+this.props.taskID).animate({"margin": "5px 0 5px 0 !important"}, 200);
-                    $("#"+this.props.taskID).slideUp(300);
-                    $('#'+this.props.taskID).css({"opacity": "0.6", "text-decoration": "line-through"});
+                    $('#container-'+this.props.taskID).animate({"margin": "5px 0 5px 0 !important"}, 200);
+                    $("#container-"+this.props.taskID).slideUp(300);
+                    $('#container-'+this.props.taskID).css({"opacity": "0.6", "text-decoration": "line-through"});
                     Haptics.notification({type: HapticsNotificationType.SUCCESS});
             }
         }}></IonCheckbox>
-            <IonLabel>{this.state.name}</IonLabel>
+
+        <IonItem class="task-name" id={this.props.taskID.toString()} button onClick={this.props.onEdit} detail={false}>
+              <IonLabel>{this.state.name}</IonLabel>
+        </IonItem>
         </IonItem>
     );
 };

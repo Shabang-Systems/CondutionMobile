@@ -78,9 +78,14 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
                 })}
                 </IonList>
                 <IonModal isOpen={this.state.showModal}>
-                    <p>This is modal content</p>
-                    <IonButton onClick={() => this.setState({showModal: false})}>Close Modal</IonButton>
-              </IonModal>
+                    <IonHeader translucent={true}>
+                        <IonToolbar>
+                            <IonButtons slot="end">
+                                <IonButton onClick={() => this.setState({showModal: false})}>Close</IonButton>
+                            </IonButtons>
+                        </IonToolbar>
+                    </IonHeader>
+                </IonModal>
             </IonContent>
         </IonPage>
         );
