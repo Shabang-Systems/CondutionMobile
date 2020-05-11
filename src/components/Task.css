@@ -30,6 +30,12 @@ ion-item {
     --background-activated-opacity: 0;
 }
 
+.task-name {
+    --border-style: none !important;
+    --background: transparent;
+    --ion-item-background: transparent;
+}
+
 ion-item.ios {
     --border-style: none;
 }
