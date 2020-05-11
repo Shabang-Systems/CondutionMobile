@@ -59,7 +59,7 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
             </IonHeader>
             <IonContent fullscreen={true}>
                 <IonFab horizontal="end" vertical="bottom" slot="fixed">
-                    <IonFabButton onClick={() => {
+                    <IonFabButton color="tertiary" onClick={() => {
                         Haptics.impact({style: HapticsImpactStyle.Heavy});
                     }}>
                         <IonIcon icon={add}></IonIcon>

@@ -1,4 +1,4 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal } from '@ionic/react';
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent } from '@ionic/react';
 
 import React, {Component} from 'react';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
@@ -41,6 +41,15 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                         </IonButtons>
                     </IonToolbar>
                 </IonHeader>
+                <IonContent>
+                    Waaaa wawawam, wawawawawawam. Wa wah wa wah wah wa wam. 
+
+                    Waaaa wawawam, wawawawawawam. Wa wah wa wah wah wa wam. 
+
+                    (Ba dum dum dum)
+
+                    Waaaa ch* wawawam ch*, wawach*wawawawam ch*. Wa ch* wah wa wah ch* wah wa wam. 
+                </IonContent>
             </IonModal>
       );
 };
