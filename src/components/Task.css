@@ -36,7 +36,11 @@ ion-item {
     --ion-item-background: transparent;
 }
 
-ion-item.ios {
+ion-item.task-name.ios {
+    --border-style: none;
+}
+
+ion-item.task-container.ios {
     --border-style: none;
 }
 

@@ -1,4 +1,4 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput } from '@ionic/react';
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem } from '@ionic/react';
 
 import React, {Component} from 'react';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
@@ -67,7 +67,29 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
-                     <IonInput value={this.state.taskInfo.name} placeholder="Enter Input" onIonChange={e => (this.modify("name", e.detail.value!))}></IonInput>
+                    <IonItem>
+                    <IonLabel position="stacked">First Name <IonText color="danger">*</IonText></IonLabel>
+                    <IonInput required type="text"></IonInput>
+                  </IonItem>
+
+                  <IonItem>
+                    <IonLabel position="stacked">Last Name <IonText color="danger">*</IonText></IonLabel>
+                    <IonInput required type="text"></IonInput>
+                  </IonItem>
+                  
+                  <IonItem>
+                    <IonLabel position="floating">Title</IonLabel>
+                    <IonInput></IonInput>
+                  </IonItem>
+
+                  <IonItem>
+                    <IonLabel position="stacked">Address</IonLabel>
+                    <IonInput placeholder="Address Line 1"></IonInput>
+                    <IonInput placeholder="Address Line 2"></IonInput>
+                    <IonInput placeholder="City"></IonInput>
+                    <IonInput placeholder="State"></IonInput>
+                    <IonInput placeholder="Zip Code"></IonInput>
+                  </IonItem>
                 </IonContent>
             </IonModal>
       );

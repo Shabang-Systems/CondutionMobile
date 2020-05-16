@@ -68,7 +68,7 @@ class Task extends Component<TaskProps, TaskState>{
 
     render() {
         return (
-        <IonItem id={"container-"+this.props.taskID.toString()}>
+        <IonItem class="task-container" id={"container-"+this.props.taskID.toString()}>
         <IonCheckbox id={"check-"+this.props.taskID.toString()} onIonChange={(e) => {
                 if(e.detail.checked) {
                     $('#container-'+this.props.taskID).animate({"margin": "5px 0 5px 0 !important"}, 200);
