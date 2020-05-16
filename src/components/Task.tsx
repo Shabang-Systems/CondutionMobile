@@ -81,7 +81,7 @@ class Task extends Component<TaskProps, TaskState>{
         <IonItem class="task-name" id={this.props.taskID.toString()} button onClick={()=>this.setState({showModal: true})} detail={false}>
               <IonLabel>{this.state.name}</IonLabel>
         </IonItem>
-            <TaskEdit engine={this.props.engine} userID={this.props.userID} taskID={this.props.taskID} visibility={this.state.showModal} onHide={()=>this.setState({showModal: false})}></TaskEdit>
+        <TaskEdit engine={this.props.engine} userID={this.props.userID} taskID={this.props.taskID} visibility={this.state.showModal} onHide={()=>this.setState({showModal: false})}></TaskEdit>
         </IonItem>
     );
 };

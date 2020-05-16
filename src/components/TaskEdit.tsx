@@ -1,4 +1,4 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem } from '@ionic/react';
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime } from '@ionic/react';
 
 import React, {Component} from 'react';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
@@ -30,17 +30,9 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
         this.state = {taskInfo: {}};
     }
 
-    /*shouldComponentUpdate(nextProps:TaskEditProps, nextState:TaskEditState) {*/
-        //if (this.props === nextProps)  {
-            //return false;
-        //} else {
-            //return true;
-        //}
-    /*}*/
 
     componentDidMount() {
         if (this.props.taskID) {
-            console.log(this.props.taskID);
             this.props.engine.db.getTaskInformation(this.props.userID, this.props.taskID).then((obj:any)=>this.setState({taskInfo: obj}));
         }
     }
@@ -54,11 +46,9 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
         this.props.engine.db.modifyTask(this.props.taskID, updateQuery);
     }
 
-
-
     render() {
         return (
-            <IonModal isOpen={this.props.visibility}>
+            <IonModal isOpen={this.props.visibility} onWillDismiss={()=> this.props.onHide()}>
                 <IonHeader translucent={true}>
                     <IonToolbar>
                         <IonButtons slot="end">
@@ -67,13 +57,13 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
-                    <IonItem>
-                    <IonLabel position="stacked">First Name <IonText color="danger">*</IonText></IonLabel>
-                    <IonInput required type="text"></IonInput>
+                  <IonItem>
+                    <IonLabel position="stacked">Task</IonLabel>
+                    <IonInput type="text" placeholder="Bonteu" value={this.state.taskInfo.name}></IonInput>
                   </IonItem>
 
                   <IonItem>
-                    <IonLabel position="stacked">Last Name <IonText color="danger">*</IonText></IonLabel>
+                    <IonLabel position="stacked">Last Name</IonLabel>
                     <IonInput required type="text"></IonInput>
                   </IonItem>
                   
@@ -83,12 +73,9 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                   </IonItem>
 
                   <IonItem>
-                    <IonLabel position="stacked">Address</IonLabel>
-                    <IonInput placeholder="Address Line 1"></IonInput>
-                    <IonInput placeholder="Address Line 2"></IonInput>
-                    <IonInput placeholder="City"></IonInput>
-                    <IonInput placeholder="State"></IonInput>
-                    <IonInput placeholder="Zip Code"></IonInput>
+                      <IonLabel position="stacked">Date</IonLabel>
+                      <IonDatetime displayFormat="MM DD YY" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
+                      <IonDatetime displayFormat="MM DD YY" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
                   </IonItem>
                 </IonContent>
             </IonModal>
