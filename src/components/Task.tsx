@@ -7,6 +7,7 @@ import './Task.css';
 import 'font-awesome/css/font-awesome.min.css';
 import $ from "jquery";
 import moment from "moment-timezone";
+import TaskEdit from "../components/TaskEdit";
 
 // TODO for Android: <uses-permission android:name="android.permission.VIBRATE" /> 
 
@@ -14,20 +15,20 @@ const { Haptics } = Plugins;
 
 interface TaskState {
     name: String,
-    style: String
+    style: String,
+    showModal: boolean,
 }
 
 interface TaskProps {
     engine: any,
     userID: String,
     taskID: String,
-    onEdit: any,
 }
 
 class Task extends Component<TaskProps, TaskState>{
     constructor(props:any) {
         super(props);
-        this.state = {name: "", style: ""};
+        this.state = {name: "", style: "", showModal: false};
     }
 
     private numDaysBetween(d1: Date, d2: Date) {
@@ -77,9 +78,10 @@ class Task extends Component<TaskProps, TaskState>{
             }
         }}></IonCheckbox>
 
-        <IonItem class="task-name" id={this.props.taskID.toString()} button onClick={this.props.onEdit} detail={false}>
+        <IonItem class="task-name" id={this.props.taskID.toString()} button onClick={()=>this.setState({showModal: true})} detail={false}>
               <IonLabel>{this.state.name}</IonLabel>
         </IonItem>
+            <TaskEdit engine={this.props.engine} userID={this.props.userID} taskID={this.props.taskID} visibility={this.state.showModal} onHide={()=>this.setState({showModal: false})}></TaskEdit>
         </IonItem>
     );
 };

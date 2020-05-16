@@ -1,4 +1,4 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent } from '@ionic/react';
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput } from '@ionic/react';
 
 import React, {Component} from 'react';
 import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
@@ -13,6 +13,7 @@ import moment from "moment-timezone";
 const { Haptics } = Plugins;
 
 interface TaskEditState {
+    taskInfo: any,
 }
 
 interface TaskEditProps {
@@ -26,10 +27,34 @@ interface TaskEditProps {
 class TaskEdit extends Component<TaskEditProps, TaskEditState>{
     constructor(props:any) {
         super(props);
+        this.state = {taskInfo: {}};
     }
 
+    /*shouldComponentUpdate(nextProps:TaskEditProps, nextState:TaskEditState) {*/
+        //if (this.props === nextProps)  {
+            //return false;
+        //} else {
+            //return true;
+        //}
+    /*}*/
+
     componentDidMount() {
+        if (this.props.taskID) {
+            console.log(this.props.taskID);
+            this.props.engine.db.getTaskInformation(this.props.userID, this.props.taskID).then((obj:any)=>this.setState({taskInfo: obj}));
+        }
     }
+
+    modify(prop:any, val:String) {
+        let o:any = this.state.taskInfo;
+        o[prop] = val;
+        this.setState({taskInfo: o});
+        let updateQuery:any = {};
+        updateQuery[prop] = val;
+        this.props.engine.db.modifyTask(this.props.taskID, updateQuery);
+    }
+
+
 
     render() {
         return (
@@ -42,13 +67,7 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
-                    Waaaa wawawam, wawawawawawam. Wa wah wa wah wah wa wam. 
-
-                    Waaaa wawawam, wawawawawawam. Wa wah wa wah wah wa wam. 
-
-                    (Ba dum dum dum)
-
-                    Waaaa ch* wawawam ch*, wawach*wawawawam ch*. Wa ch* wah wa wah ch* wah wa wam. 
+                     <IonInput value={this.state.taskInfo.name} placeholder="Enter Input" onIonChange={e => (this.modify("name", e.detail.value!))}></IonInput>
                 </IonContent>
             </IonModal>
       );

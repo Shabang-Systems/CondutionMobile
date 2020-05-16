@@ -83,12 +83,9 @@ class Upcoming extends Component<UpcomingProps, UpcomingState>{
 
                 <IonList className="task-list">
                 {this.state.unsortedTasks.map((tid: any) => {
-                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid} key={tid} onEdit={()=>{
-                        this.setState({isEditing: tid, showModal: true});
-                    }}/>)
+                    return (<Task userID={this.props.user} engine={this.props.engine} taskID={tid} key={tid}/>)
                 })}
                 </IonList>
-                <TaskEdit engine={this.props.engine} userID={this.props.user} taskID={this.state.isEditing} visibility={this.state.showModal} onHide={()=>this.setState({showModal: false})}></TaskEdit>
             </IonContent>
         </IonPage>
         );
