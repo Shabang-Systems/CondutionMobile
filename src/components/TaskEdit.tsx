@@ -1,7 +1,6 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime } from '@ionic/react';
-
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon } from '@ionic/react';
 import React, {Component} from 'react';
-import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
+import { playCircle, stopCircle } from 'ionicons/icons';
 import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
 import './TaskEdit.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -56,27 +55,26 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                         </IonButtons>
                     </IonToolbar>
                 </IonHeader>
-                <IonContent>
-                  <IonItem>
-                    <IonLabel position="stacked">Task</IonLabel>
-                    <IonInput type="text" placeholder="Bonteu" value={this.state.taskInfo.name}></IonInput>
-                  </IonItem>
+                <IonContent id="editView">
+                  <IonList>
+                      <IonItem>
+                        <IonLabel position="stacked">Name</IonLabel>
+                        <IonInput type="text" placeholder="Koolio" value={this.state.taskInfo.name}></IonInput>
+                      </IonItem>
 
-                  <IonItem>
-                    <IonLabel position="stacked">Last Name</IonLabel>
-                    <IonInput required type="text"></IonInput>
-                  </IonItem>
-                  
-                  <IonItem>
-                    <IonLabel position="floating">Title</IonLabel>
-                    <IonInput></IonInput>
-                  </IonItem>
-
-                  <IonItem>
-                      <IonLabel position="stacked">Date</IonLabel>
-                      <IonDatetime displayFormat="MM DD YY" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
-                      <IonDatetime displayFormat="MM DD YY" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
-                  </IonItem>
+                      <IonItem>
+                        <IonLabel position="stacked">Description</IonLabel>
+                        <IonTextarea placeholder="Add a cool description?" value={this.state.taskInfo.description}></IonTextarea>
+                      </IonItem>
+                      
+                      <IonItem>
+                          <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
+                          <IonDatetime displayFormat="MMM D YY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
+                      </IonItem>
+                      <IonItem>
+                          <IonDatetime displayFormat="MM DD YY" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
+                      </IonItem>
+                  </IonList>
                 </IonContent>
             </IonModal>
       );

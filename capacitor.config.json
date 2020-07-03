@@ -8,7 +8,7 @@
   "server": {
     "url": "http://localhost:8100",
     "cleartext": true,
-    "originalUrl": "http://100.74.243.3:8100",
+    "originalUrl": "http://localhost:8100",
     "originalCleartext": true
   }
 }
