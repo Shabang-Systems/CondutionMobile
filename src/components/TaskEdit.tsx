@@ -1,4 +1,4 @@
-import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon } from '@ionic/react';
+import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon, IonToggle } from '@ionic/react';
 import React, {Component} from 'react';
 import { playCircle, stopCircle } from 'ionicons/icons';
 import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
@@ -69,10 +69,11 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                       
                       <IonItem>
                           <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
-                          <IonDatetime displayFormat="MMM D YY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
+                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
                       <IonItem>
-                          <IonDatetime displayFormat="MM DD YY" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
+                          <IonLabel><IonIcon icon={stopCircle}></IonIcon></IonLabel>
+                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
                   </IonList>
                 </IonContent>

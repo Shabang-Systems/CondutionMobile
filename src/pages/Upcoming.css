@@ -13,12 +13,14 @@ ion-header {
 
 .upcoming-sublabel {
     font-weight: 600;
-    margin: 10px 0 10px 14px;
+    margin: 10px 0 10px 20px;
     font-size: 18px;
 } 
 
 ion-content.ios .task-list {
     margin-top: 3px;
+    --padding-start: 2px;
+    --padding-end: 2px;
 }
 
 ion-content.md .task-list {
