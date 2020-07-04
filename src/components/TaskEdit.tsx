@@ -75,6 +75,14 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                           <IonLabel><IonIcon icon={stopCircle}></IonIcon></IonLabel>
                           <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
+                      <IonItem>
+                        <IonLabel>Flagged</IonLabel>
+                        <IonToggle color="tertiary" />
+                      </IonItem>
+                      <IonItem>
+                        <IonLabel>Floating</IonLabel>
+                        <IonToggle color="secondary" />
+                      </IonItem>
                   </IonList>
                 </IonContent>
             </IonModal>
