@@ -93,6 +93,7 @@ http://ionicframework.com/docs/theming/ */
   --task-checkmark-ds: #f4721a;
   --task-checkmark-od: #d32f19;
 
+  --special: #dadeae;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -219,6 +220,8 @@ http://ionicframework.com/docs/theming/ */
     --task-checkmark: #c5d0ef;
     --task-checkmark-ds: #f4721a;
     --task-checkmark-od: #d32f19;
+
+    --special: #0e1c42;
   }
 
   /*

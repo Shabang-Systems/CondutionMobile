@@ -3,6 +3,14 @@
     --padding-end: 20px;
 }
 
+#flagged {
+    --background-checked: var(--special);
+}
+
+#floating {
+    --background-checked: var(--task-checkbox-feature-alt);
+}
+
 ion-item {
     --border-color: transparent;
 }

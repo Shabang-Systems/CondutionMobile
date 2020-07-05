@@ -78,11 +78,11 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                   <IonList>
                       <IonItem>
                         <IonLabel>Flagged</IonLabel>
-                        <IonToggle color="tertiary" />
+                        <IonToggle id="flagged" />
                       </IonItem>
                       <IonItem>
                         <IonLabel>Floating</IonLabel>
-                        <IonToggle color="secondary" />
+                        <IonToggle id="floating" />
                       </IonItem>
                   </IonList>
                   <hr />
