@@ -3,3 +3,18 @@
     --padding-end: 20px;
 }
 
+#project {
+    width: 80%;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.tagbox {
+    margin: 0px 6px;
+}
+
+.selectBox {
+    padding-top: 5px;
+}
+
+

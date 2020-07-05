@@ -20,6 +20,7 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^5.1.3",
+    "@types/react-select": "^3.0.14",
     "cordova-plugin-datepicker": "^0.9.3",
     "firebase": "^7.14.2",
     "font-awesome": "^4.7.0",
@@ -31,6 +32,7 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-select": "^3.1.0",
     "typescript": "3.8.3"
   },
   "scripts": {

@@ -1,5 +1,6 @@
 import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon, IonToggle } from '@ionic/react';
 import React, {Component} from 'react';
+import Select from 'react-select';
 import { playCircle, stopCircle } from 'ionicons/icons';
 import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
 import './TaskEdit.css';
@@ -22,6 +23,12 @@ interface TaskEditProps {
     visibility: boolean,
     onHide: any;
 }
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 class TaskEdit extends Component<TaskEditProps, TaskEditState>{
     constructor(props:any) {
@@ -67,6 +74,14 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                         <IonTextarea placeholder="Add a cool description?" value={this.state.taskInfo.description}></IonTextarea>
                       </IonItem>
                       
+                  </IonList>
+                  <div className="tagbox">
+                      <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
+                      <Select id="project" className="selectBox" isSearchable={true} isClearable={true} options={options} />
+                  </div>
+
+
+                  <IonList>
                       <IonItem>
                           <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
                           <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
@@ -75,6 +90,8 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                           <IonLabel><IonIcon icon={stopCircle}></IonIcon></IonLabel>
                           <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
+                  </IonList>
+                  <IonList>
                       <IonItem>
                         <IonLabel>Flagged</IonLabel>
                         <IonToggle color="tertiary" />
