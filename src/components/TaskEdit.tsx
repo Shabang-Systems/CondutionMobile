@@ -1,7 +1,7 @@
 import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon, IonToggle } from '@ionic/react';
 import React, {Component} from 'react';
 import Select from 'react-select';
-import { playCircle, stopCircle } from 'ionicons/icons';
+import { playCircle, stopCircle, albums, pricetags } from 'ionicons/icons';
 import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
 import './TaskEdit.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -66,7 +66,7 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                   <IonList>
                       <IonItem>
                         <IonLabel position="stacked">Name</IonLabel>
-                        <IonInput type="text" placeholder="Koolio" value={this.state.taskInfo.name}></IonInput>
+                        <IonInput type="text" placeholder="Bontehu" value={this.state.taskInfo.name}></IonInput>
                       </IonItem>
 
                       <IonItem>
@@ -74,22 +74,6 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                         <IonTextarea placeholder="Add a cool description?" value={this.state.taskInfo.description}></IonTextarea>
                       </IonItem>
                       
-                  </IonList>
-                  <div className="tagbox">
-                      <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
-                      <Select id="project" className="selectBox" isSearchable={true} isClearable={true} options={options} />
-                  </div>
-
-
-                  <IonList>
-                      <IonItem>
-                          <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
-                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
-                      </IonItem>
-                      <IonItem>
-                          <IonLabel><IonIcon icon={stopCircle}></IonIcon></IonLabel>
-                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
-                      </IonItem>
                   </IonList>
                   <IonList>
                       <IonItem>
@@ -99,6 +83,26 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                       <IonItem>
                         <IonLabel>Floating</IonLabel>
                         <IonToggle color="secondary" />
+                      </IonItem>
+                  </IonList>
+                  <hr />
+                  <div className="tagbox">
+                      <IonLabel><IonIcon icon={albums}></IonIcon></IonLabel>
+                      <Select id="project" className="selectBox" isSearchable={true} isClearable={true} options={options} />
+                  </div>
+                  <div className="tagbox">
+                      <IonLabel><IonIcon icon={pricetags}></IonIcon></IonLabel>
+                      <Select id="tag" className="selectBox" isSearchable={true} isClearable={true} options={options} />
+                  </div>
+                  <hr />
+                  <IonList>
+                      <IonItem>
+                          <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
+                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Defer" value={this.state.taskInfo.defer} onIonChange={()=>{}}></IonDatetime>
+                      </IonItem>
+                      <IonItem>
+                          <IonLabel><IonIcon icon={stopCircle}></IonIcon></IonLabel>
+                          <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
                   </IonList>
                 </IonContent>

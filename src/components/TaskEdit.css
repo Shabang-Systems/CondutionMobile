@@ -3,17 +3,26 @@
     --padding-end: 20px;
 }
 
-#project {
-    width: 80%;
-    display: inline-block;
-    z-index: 1000;
+ion-item {
+    --border-color: transparent;
 }
 
 .tagbox {
     margin: 0px 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tagbox ion-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1px;
 }
 
 .selectBox {
+    width: 80%;
+    display: inline-block;
     padding-top: 5px;
 }
 
