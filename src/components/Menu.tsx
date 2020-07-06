@@ -12,7 +12,7 @@ import {
 
 import React, {Component} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { chevronForwardCircle, layers, albums } from 'ionicons/icons';
+import { chevronForwardCircle, layers, shareSocial } from 'ionicons/icons';
 import './Menu.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -72,7 +72,7 @@ class Menu extends Component<MenuProps & RouteComponentProps<{}>, MenuState>{
                     return (
                       <IonMenuToggle class="perspective-toggle" key={p.id} autoHide={false}>
                         <IonItem className={location.pathname === "/project/"+p.id ? 'selected menu-item menu-project' : 'menu-item menu-project'} routerLink={"/project/"+p.id} routerDirection="none" lines="none" detail={false}>
-                            <IonIcon slot="start" icon={albums}></IonIcon>
+                            <IonIcon slot="start" icon={shareSocial}></IonIcon>
                             <IonLabel class="menu-text">{p.name}</IonLabel>
                         </IonItem>
                       </IonMenuToggle>

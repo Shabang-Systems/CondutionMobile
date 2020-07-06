@@ -1,7 +1,7 @@
 import {IonHeader, IonToolbar, IonButtons, IonButton, IonModal, IonContent, IonInput, IonText, IonLabel, IonItem, IonDatetime, IonTextarea, IonList, IonIcon, IonToggle } from '@ionic/react';
 import React, {Component} from 'react';
 import Select from 'react-select';
-import { playCircle, stopCircle, albums, pricetags } from 'ionicons/icons';
+import { playCircle, stopCircle, shareSocial, pricetags, globeSharp, flag } from 'ionicons/icons';
 import { Plugins, HapticsImpactStyle, HapticsNotificationType } from '@capacitor/core';
 import './TaskEdit.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -29,6 +29,17 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
+
+const customStyles = {
+  option: (provided:any, state:any) => ({
+      ...provided,
+  }),
+  control: (provided:any, state:any) => ({
+      ...provided,
+      height: 18,
+      backgroundColor: "var(--ion-menu-background)",
+  }),
+}
 
 class TaskEdit extends Component<TaskEditProps, TaskEditState>{
     constructor(props:any) {
@@ -68,33 +79,26 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                         <IonLabel position="stacked">Name</IonLabel>
                         <IonInput type="text" placeholder="Bontehu" value={this.state.taskInfo.name}></IonInput>
                       </IonItem>
-
-                      <IonItem>
-                        <IonLabel position="stacked">Description</IonLabel>
-                        <IonTextarea placeholder="Add a cool description?" value={this.state.taskInfo.description}></IonTextarea>
-                      </IonItem>
-                      
                   </IonList>
-                  <IonList>
-                      <IonItem>
-                        <IonLabel>Flagged</IonLabel>
-                        <IonToggle id="flagged" />
-                      </IonItem>
-                      <IonItem>
-                        <IonLabel>Floating</IonLabel>
-                        <IonToggle id="floating" />
-                      </IonItem>
-                  </IonList>
-                  <hr />
                   <div className="tagbox">
-                      <IonLabel><IonIcon icon={albums}></IonIcon></IonLabel>
-                      <Select id="project" className="selectBox" isSearchable={true} isClearable={true} options={options} />
+                      <IonLabel><IonIcon icon={shareSocial}></IonIcon></IonLabel>
+                      <Select id="project" className="selectBox" isSearchable={true} isClearable={true} options={options} styles={customStyles}/>
                   </div>
                   <div className="tagbox">
                       <IonLabel><IonIcon icon={pricetags}></IonIcon></IonLabel>
-                      <Select id="tag" className="selectBox" isSearchable={true} isClearable={true} options={options} />
+                      <Select id="tag" className="selectBox" isSearchable={true} isClearable={true} options={options} isMulti />
                   </div>
                   <hr />
+                  <IonList>
+                      <IonItem>
+                        <IonLabel><IonIcon icon={flag}></IonIcon></IonLabel>
+                        <IonToggle id="flagged" />
+                      </IonItem>
+                      <IonItem>
+                        <IonLabel><IonIcon icon={globeSharp}></IonIcon></IonLabel>
+                        <IonToggle id="floating" />
+                      </IonItem>
+                  </IonList>
                   <IonList>
                       <IonItem>
                           <IonLabel><IonIcon icon={playCircle}></IonIcon></IonLabel>
@@ -105,6 +109,11 @@ class TaskEdit extends Component<TaskEditProps, TaskEditState>{
                           <IonDatetime displayFormat="MMM D YY h:m:s A" pickerFormat="MMM DD, YYYY h:m:s A" placeholder="Due" value={this.state.taskInfo.due} onIonChange={()=>{}}></IonDatetime>
                       </IonItem>
                   </IonList>
+                  <hr />
+                  <IonItem>
+                    <IonLabel position="stacked">Description</IonLabel>
+                    <IonTextarea placeholder="Add a cool description?" value={this.state.taskInfo.description}></IonTextarea>
+                  </IonItem>
                 </IonContent>
             </IonModal>
       );
