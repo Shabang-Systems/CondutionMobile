@@ -1,6 +1,8 @@
 # #!/Shabang | Condution
 **This. Is. Condution.** A personal project management system that makes sense and will not burn your pockets out.
 
+(THIS APP IS NOW ON THE CAPACITOR FRAMEWORK NATIVELY. Development will be switch to [our main repo](https://github.com/Shabang-Systems/Condution))
+
 ***
 
 ## What the heck?
